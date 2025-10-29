@@ -6,15 +6,28 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
+        <a href="https://www.baidu.com">页面将在<span>5</span>秒钟后跳转</a>
         <script>
-            var a = 10;
-            function fn() {
-                confirm("Hello World!");
-            }
-            fn()
-            console('hello world')
+            // var a = 10;
+            // function fn() {
+            //     confirm("Hello World!");
+            // }
+            // fn()
+            // setTimeout(() => {
+            //     console.log('timeout');
+            // }, 2000);
+            // setTimeout(() => {
+            //     location.href = 'https://www.baidu.com';
+            // }, 5000);
+            const a = document.querySelector('a');
+            let time = 5;
+            let timer = setInterval(() => {
+                time--;
+                a.innerHTML = `页面将在<span>${time}</span>秒钟后跳转`
+                if (time === 0){
+                    clearInterval(timer);
+                    location.href = 'https://www.baidu.com';
+                }},1000)
         </script>
-    </div>
 </body>
 </html>

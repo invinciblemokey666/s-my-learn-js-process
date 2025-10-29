@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <a href="#/friend">关注</a>
+    <a href="#/mine">我的</a>
+    <a href="#/download">下载</a>
+    <button class="lalala">刷新</button> -->
+    <script>
+        // const btn = document.querySelector('.lalala')
+        // btn.addEventListener('click',()=>{
+        //     // reload 方法可以重新加载当前页面,(相当于刷新),()里面可以传true或false
+        //     // true: 强制从服务器重新加载页面,忽略缓存
+        //     location.reload()
+        // })
+        // 存入数据
+        localStorage.setItem(uname,shen)
+        // 获取数据
+        localStorage.getItem(uname)
+        // 更新数据
+        localStorage.setItem(uname,gong)
+        // 删除数据
+        localStorage.removeItem(uname)
+        // 清空所有数据
+        localStorage.clear()
+        const obj = {
+            name:'kaby',
+            age:22,
+        }
+        // 对象存入本地存储需要转换成字符串
+        localStorage.setItem('user',JSON.stringify(obj))
+        // 但是由于存入时转化成了字符串，所以获取数据时需要重新转换成对象
+        const user = JSON.parse(localStorage.getItem('user'))
+        console.log(user.name);
+    </script>
+</body>
+</html>
