@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            name:'spy666',
+            hobby:'sing',
+            objj:function(){
+                console.log('say~hi')
+            }
+        }
+        for(let key in obj){
+            console.log(key)
+            console.log(obj[key])
+        }
+        let arr = [
+            {name : '小明',gender : '男',hometown : '山东'},
+            {name : '小王',gender : '男',hometown : '山西'},
+            {name : '小美',gender : '女',hometown : '河北'}
+        ]
+        for(let i=0;i<arr.length;i++){
+            console.log(arr[i])
+            console.log(arr[i].name)
+            console.log(arr[i].hometown)
+        }
+        let arr1=['张三','李四','瓦昂五','万物','王五','赵六','设立','沈七','冯八','谢九','吴十','丁十一']
+        function ranadom(N,M){
+            return Math.floor(Math.random()*(M-N+1))+N
+        }
+        console.log(ranadom(0,13))
+        console.log(arr1[ranadom(0,12)])
+    </script>
+</body>
+</html>

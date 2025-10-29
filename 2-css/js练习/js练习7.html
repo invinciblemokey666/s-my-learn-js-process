@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            background-image: url(../../二次元\ 妹子\ 动漫\ \(23\)_爱给网_aigei_com_16x16.ico);
+            margin: 0 auto;
+        }
+        .btn{
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <button>开始倒计时(60)</button>
+    <div clear="both">
+    <button class="btn">X</button>
+    </div>
+    <script>
+        let button=document.querySelector('button')
+        button.disabled=true
+        let i=60
+        let n=setInterval(function(){
+                   i--
+                   button.innerHTML=`开始倒计时(${i})`
+                   if(i===0){
+                       button.disabled=false
+                       button.innerHTML='可以同意了'
+                       clearInterval(n)
+                    }
+            },1000)
+        // document.querySelector('.btn').onclick=function(){
+        //     document.querySelector('div').style.display='none'
+        // }
+        const btn=document.querySelector('.btn')
+        const box=document.querySelector('div')
+        btn.addEventListener('click',function(){
+            box.style.display='none'
+        })
+    </script>
+</body>
+</html>

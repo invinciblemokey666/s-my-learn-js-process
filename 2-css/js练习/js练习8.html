@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 600px;
+            height: 300px;
+            background-color: gray;
+            margin: 0 auto;
+            
+        }
+        p{
+            font-size: 30px;
+            text-align: center;
+            line-height: 10px;
+        }
+        .btnk{
+            width: 50px;
+            height: 50px;
+            font-size: 10px;
+            float: left;
+            margin-left: 20px;
+        }
+        .btng{
+            width: 50px;
+            height: 50px;
+            font-size: 10px;
+            float: right;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div clear="both">
+        <p>提问: </p>
+        <br>
+        <p class="position">1+1等于多少？</p>
+        <button class="btnk">开始</button>
+        <button class="btng">结束</button>
+    </div>
+    <script>
+        const btnk=document.querySelector('.btnk')
+        const btng=document.querySelector('.btng')
+        const pos=document.querySelector('.position')
+        let n=0
+        let randomIndex=0
+        let questions=['1+1等于多少？','2+2等于多少？','3+3等于多少？','4+4等于多少？','5+5等于多少？']
+        btnk.addEventListener('click',function(){
+                n=setInterval(function(){
+                randomIndex=Math.floor(Math.random()*questions.length)
+                if(questions.length===1){
+                    btnk.disabled=true
+                    btng.disabled=true
+                    clearInterval(n)
+                }
+                pos.innerHTML=questions[randomIndex]
+            },1000)
+        })
+        btng.addEventListener('click',function(){
+            clearInterval(n)
+            questions.splice(randomIndex,1)
+        })
+    </script>
+</body>
+</html>

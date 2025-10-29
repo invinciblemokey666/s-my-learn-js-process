@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 第一种写法：选中具有title属性的元素 */
+        /* [title]{
+            color: blue;
+        } */
+        /* 第二种写法：选中具有title属性，且属性值为atguigu1的元素 */
+        /* [title="atguigu1"]{
+            color: blueviolet;
+        } */
+        /* 第三种写法：选中具有title属性，且属性值以字母a开头的元素 */
+        /* [title^="a"]{
+            color: red;
+        } */
+        /* 第四种写法：选中具有title属性，且属性值以字母u结尾的元素 */
+        /* [title$="4"]{
+            color: red;
+        } */
+        /* 第四种写法：选中具有title属性，且属性值中包含字母t的元素 */
+        [title*="t"]{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div title="atguigu1">尚硅谷1</div>
+    <div title="atguigu2">尚硅谷2</div>
+    <div title="guigu3">尚硅谷3</div>
+    <div title="guigu4">尚硅谷4</div>
+</body>
+</html>

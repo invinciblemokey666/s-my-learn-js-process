@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        /* 选中div后紧紧相连的兄弟p元素（睡在我下铺的兄弟————相邻兄弟选择器） */
+        /* div+p{
+            color: aqua;
+        } */
+        /* 选中div后所有的兄弟p元素（睡在我下铺的所有兄弟————通用兄弟选择器） */
+        div~p{
+            color: red;
+        }
+        li+li {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div>尚硅谷</div>
+    <p>前端</p>
+    <p>java</p>
+    <p>UI</p>
+    <p>大数据</p>
+    <ul>
+        <li>主页</li>
+        <li>秒杀</li>
+        <li>订单</li>
+        <li>我的</li>
+    </ul>
+</body>
+</html>

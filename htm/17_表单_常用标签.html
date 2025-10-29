@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>17_表单_常用标签</title>
+</head>
+<body>
+    <form action="http://search.jd.com/search">
+        <fieldset>
+            <legend>主要信息</legend>
+            <!-- 文本输入框 label使账户俩字也成为焦点-->
+            <label for="zhanghu">账户：</label>
+            <input id="zhanghu" type="text" name="account" value="zhangsan" maxlength="10"><br>
+            <!-- 密码输入框 -->
+            <label>
+            密码：
+            <input type="password" name="pwd" value="" maxlength="10"><br>
+            </label>
+            <!-- 单选框 checked默认选中适用单选复选-->
+            性别：
+            <input type="radio" name="gender" value="male" checked>男
+            <input type="radio" name="gender" value="female">女<br>
+        </fieldset>
+        <fieldset>
+            <legend>附属信息</legend>
+            <!-- 多选框 -->
+            爱好：
+            <input type="checkbox" name="hobby" value="smoke">抽烟
+            <!-- disable 禁用 -->
+            <input disabled type="checkbox" name="hobby" value="drink">喝酒
+            <input type="checkbox" name="hobby" value="prem">烫头
+            <br>
+            其它：
+            <textarea name="other" cols="22" rows="3"></textarea><br>
+            <!-- selected下拉默认选中 -->
+            籍贯：
+            <select name="place">
+                <option value="粤">广东省</option>
+                <option value="鲁" selected>山东省</option>
+                <option value="晋">山西省</option>
+            </select><br>
+        </fieldset>
+        <!-- 隐藏域 -->
+        <input type="hidden" name="from" value="toutiao"><br>
+        <!-- 确认三种写法 -->
+        <button>确认</button>
+        <!-- <button type="submit">确认</button> -->
+        <!-- <input type="submit" value="确认"> -->
+        <!-- 重置按钮两种写法 -->
+        <button type="reset">重置</button>
+        <!-- <input type="reset" value="重置"> -->
+        <!-- 普通按钮 -->
+        <button type="button" value="检测账户是否被注册">检测账户是否被注册</button>
+    </form>
+
+</body>
+</html>

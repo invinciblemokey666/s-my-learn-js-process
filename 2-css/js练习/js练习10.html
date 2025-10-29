@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件冒泡与阻止冒泡</title>
+    <script>
+        // DOMContentLoaded 事件在初始的 HTML 文档被完全加载和解析完成后触发，不需要等待样式表、图片和子框架的加载完成
+        // document.addEventListener('DOMContentLoaded',function(){
+        //     console.log('DOM结构加载完成')
+        // })
+        // load 事件在页面及其所有资源（如样式表和图片）完全加载后触发
+        // window.addEventListener('load',function(){
+        //     console.log('页面加载完成')
+        // })
+        // window.onload=function(){
+        //     console.log('页面加载完成')
+        // }
+    </script>
+    <style>
+        .father{
+            width: 300px;
+            height: 300px;
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .son{
+            width: 150px;
+            height: 150px;
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <button>按钮</button>
+    <div>
+        <ul class="uu">
+            <li>第一个</li>
+            <li>第二个</li>
+            <li>第三个</li>
+            <li>第四个</li>
+            <li>第五个</li>
+        </ul>
+    </div>
+    <script>
+        const father=document.querySelector('.father')
+        const son=document.querySelector('.son')
+        const ul=document.querySelector('ul')
+        document.addEventListener('click',function(){
+            console.log('我是爷爷')
+        })
+        father.addEventListener('click',function(){
+            console.log('我是爸爸')
+        })
+        son.addEventListener('click',function(){
+            console.log('我是儿子')
+        })
+        // 阻止事件冒泡
+        // 事件冒泡：事件从最具体的元素开始触发，然后逐级向上传播到较不具体的元素
+        // stopPropagation() 方法阻止事件冒泡
+        son.addEventListener('click',function(e){
+            e.stopPropagation()
+        })
+        ul.addEventListener('click',function(e){
+            if(e.target.tagName==='LI'){
+                e.target.style.color='red'
+            }
+        })
+        window.addEventListener('scroll',function(){
+            const n = document.documentElement.scrollTop
+            ul.style.opacity=n>=300?1:0;
+        })
+        const btn=document.querySelector('button')
+        btn.addEventListener('click',function(){
+            document.documentElement.scrollTop=0
+        })
+    </script>
+</body>
+</html>

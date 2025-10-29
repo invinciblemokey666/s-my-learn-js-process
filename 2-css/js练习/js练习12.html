@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        const div = document.createElement('div')
+        div.innerHTML = 'Hello, World!'
+        // appendChild 方法将一个节点添加到指定父节点的子节点列表的末尾处
+        // document.body.appendChild(div)
+        const ul = document.querySelector('ul')
+        const li = document.createElement('li')
+        // insertBefore（要添加的节点，参考节点） 方法将一个节点插入到指定子节点之前
+        ul.insertBefore(li,ul.children[0])
+        li.innerHTML = '4'
+        ul.insertBefore(ul.children[0].cloneNode(true),ul.children[0])
+        ul.removeChild(ul.children[1])
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .rich{
+            color: gold;
+        }
+        .beauty{
+            color: red;
+        }
+        .pig{
+            color: green;
+        }
+        .dog{
+            color: blue;
+        }
+        .beauty,
+        .dog,
+        #suxi,
+        .pig,
+        .rich{
+            font-size: 40px;
+            background-color: aqua;
+            width: 180px;
+        }
+        h2 ul li{
+            color: blueviolet;
+        }
+        .sb div.liu{
+            color: chocolate;
+        }
+        /* h3的后代中是div也是dog类型的子代中的p */
+        h3 div.dog>p {
+            color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="rich">土豪张三</h2>
+    <h2 class="beauty">明星李四</h2>
+    <h2 class="sb">
+        <ul>
+            <li>破产王五（不加任何样式）</li>
+                <div class="liu">刘麻子</div>
+            <li>破产张三</li>
+            <li>破产王李四</li>
+        </ul>
+    </h2>
+    <hr>
+    <h3>
+        <div class="dog">
+            <p>小狗旺财</p>
+        </div>
+    </h3>
+    <p class="pig">小猪佩奇</p>
+    <p id="suxi">小羊苏西</p>
+</body>
+</html>

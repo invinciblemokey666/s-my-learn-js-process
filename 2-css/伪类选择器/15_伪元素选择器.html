@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 选中的是div中的第一个字母 */
+        div::first-letter{
+            color: red;
+            font-size: 60px;
+        }
+        /* 选中的是div中的第一行 */
+        div::first-line{
+            background-color: yellow;
+        }
+        /* 选中的文字颜色和背景颜色 */
+        div::selection{
+            background-color: green;
+            color: orange;
+        }
+        /* 提示文字的颜色 */
+        input::placeholder{
+            color: skyblue;
+        }
+        /* 选中的是p元素最开始的位置 */
+        p::before{
+            content:"￥";
+        }
+        /* 选中的是p元素最后面的位置 */
+        p::after{
+            content: ".00";
+        }
+    </style>
+</head>
+<body>
+    <div>Lorem ipsum dolor sit amet.</div>
+    <input type="text" placeholder="请输入你的用户名">
+    <p>199</p>
+    <p>299</p>
+    <p>399</p>
+    <p>499</p>
+</body>
+</html>

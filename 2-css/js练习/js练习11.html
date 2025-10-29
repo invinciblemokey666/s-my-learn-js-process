@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <script>
+        function updateTime() {
+            let data = new Date();
+            // 或者 let data = new Date().toLocaleString();
+            // console.log(data);
+            let year=data.getFullYear();
+            let month=data.getMonth()+1;
+            let day=data.getDate();
+            let hours=data.getHours();
+            let minutes=data.getMinutes();
+            let seconds=data.getSeconds();
+            return `现在是${year}年${month}月 ${day} 日 ${hours} 时 ${minutes} 分 ${seconds} 秒`;
+        }
+        setInterval(function() {
+            document.querySelector('input').value = updateTime();
+        }, 1000);
+        const now = +new Date();
+        const future = +new Date('2025-12-31 23:59:59');
+        const diff = (future - now)/1000;
+        console.log(`距离2025年结束还有${Math.floor(diff/60/60/24)}天${Math.floor(diff/60/60%24)}时${Math.floor(diff/60%60)}分${Math.floor(diff%60)}秒`);
+    </script>
+</body>
+</html>

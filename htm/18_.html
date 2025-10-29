@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <!-- 利用iframe嵌入一个网页 -->
+    <!-- <iframe src="http://www.taobao.com" width="900" height="900" frameborder="0"></iframe> -->
+    <!-- 利用iframe嵌入一个图片,与超链接target配合使用 -->
+    <iframe src="./path_text/美女1.jpg" width="900" height="900" frameborder="0"></iframe>
+    <a href="https://www.taobao.com" target="tt">点我看淘宝</a><br>
+    <iframe name="tt" frameborder="0"></iframe>
+    <!-- 与表单target配合使用 -->
+    <form action="https://so.toutiao.com/search" target="container">
+        <input type="text" name="keyword"><br>
+        <button>搜索</button>
+    </form>
+    <iframe name="container" frameborder="0"></iframe>
+</body>
+</html>
