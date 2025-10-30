@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #721c24;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+
+        }
+
+        .title {
+            width: 933px;
+            height: 50px;
+            line-height: 50px;
+            padding-right: 15px;
+            border: 1px solid #ebebeb;
+            margin: 10px auto;
+            background-color: #f2f2f2;
+            text-align: right;
+        }
+
+        .title span {
+            display: inline-block;
+            vertical-align: middle;
+            height: 20px;
+            margin: -3px 5px 0;
+            text-align: center;
+            line-height: 20px;
+            color: #f26934;
+            font-weight: 700;
+        }
+
+        table {
+            margin: 0 auto;
+            width: 950px;
+            border-collapse: collapse;
+            color: #3c3637;
+        }
+
+        th {
+            padding: 10px;
+            background: #f2f2f2;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        td,
+        th {
+            border: 1px solid #ebebeb;
+            padding: 15px;
+        }
+
+        td {
+
+            color: #666;
+            font-size: 16px;
+
+        }
+
+        tbody tr {
+            background: #fff;
+        }
+
+        tbody tr:hover {
+            background: #fbfafa;
+        }
+
+        tbody a {
+            display: inline-block;
+            width: 80px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            background-color: #f26934;
+        }
+
+        .info {
+            width: 900px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .info input,
+        .info select {
+            width: 100px;
+            height: 30px;
+            outline: none;
+            border: 1px solid #ebebeb;
+            padding-left: 5px;
+            box-sizing: border-box;
+            margin-right: 10px;
+        }
+
+        .info button {
+            width: 70px;
+            height: 30px;
+            background-color: #5dbfd8;
+            outline: none;
+            border: 0;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .info button:hover {
+            background-color: #52abc1;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>学生就业统计表</h1>
+    <form class="info" autocomplete="off">
+        <input type="text" class="uname" name="uname" placeholder="姓名" />
+        <input type="text" class="age" name="age" placeholder="年龄" />
+        <input type="text" class="salary" name="salary" placeholder="薪资" />
+        <select name="gender" class="gender">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+        <select name="city" class="city">
+            <option value="北京">北京</option>
+            <option value="上海">上海</option>
+            <option value="广州">广州</option>
+            <option value="深圳">深圳</option>
+            <option value="曹县">曹县</option>
+        </select>
+        <button class="add">
+            <i class="iconfont icon-tianjia"></i>添加
+        </button>
+    </form>
+
+    <div class="title">共有数据<span>0</span>条</div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>薪资</th>
+                <th>就业城市</th>
+                <th>录入时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        const infoForm = document.querySelector('.info');
+        const tbody = document.querySelector('tbody');
+        const titleSpan = document.querySelector('.title span');
+
+        // 从 localStorage 初始化 data（保留已有数据）
+        let data = JSON.parse(localStorage.getItem('data')) || [];
+
+        // 计算下一个 stuId（保证重载后不冲突）
+        let stuId = data.length ? Math.max(...data.map(d => Number(d.stuId) || 0)) + 1 : 1;
+
+        function escapeHtml(str) {
+            if (str == null) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function renderTable() {
+            titleSpan.textContent = data.length;
+            tbody.innerHTML = data.map(item => {
+                return `<tr> 
+          <td>${item.stuId}</td>
+          <td>${escapeHtml(item.uname)}</td>
+          <td>${escapeHtml(item.age)}</td>
+          <td>${escapeHtml(item.gender)}</td>
+          <td>${escapeHtml(item.salary)}</td>
+          <td>${escapeHtml(item.city)}</td>
+          <td>${item.time}</td>
+          <td>
+            <a href="javascript:;" class="del" data-id="${item.stuId}">删除</a>
+          </td>
+        </tr>`;
+            }).join('');
+        }
+
+        // 首次渲染
+        renderTable();
+
+        infoForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const unameInput = infoForm.querySelector('.uname');
+            const ageInput = infoForm.querySelector('.age');
+            const salaryInput = infoForm.querySelector('.salary');
+            const genderInput = infoForm.querySelector('.gender');
+            const cityInput = infoForm.querySelector('.city');
+
+            if (!unameInput.value.trim() || !ageInput.value.trim() || !salaryInput.value.trim()) {
+                alert('请填写完整信息');
+                return;
+            }
+            const newStudent = {
+                stuId: stuId++,
+                uname: unameInput.value.trim(),
+                age: ageInput.value.trim(),
+                salary: salaryInput.value.trim(),
+                gender: genderInput.value,
+                city: cityInput.value,
+                time: new Date().toLocaleString()
+            };
+            data.push(newStudent);
+            localStorage.setItem('data', JSON.stringify(data));
+            renderTable();
+            infoForm.reset();
+        });
+
+        // 事件委托：删除条目并同步 localStorage
+        tbody.addEventListener('click', function (e) {
+            const a = e.target.closest('a.del');
+            if (!a) return;
+            const id = Number(a.dataset.id);
+            if (!confirm('确认删除该条目？')) return;
+            data = data.filter(item => Number(item.stuId) !== id);
+            localStorage.setItem('data', JSON.stringify(data));
+            renderTable();
+        });
+    </script>
+</body>
+
+
+</html>
+</html>

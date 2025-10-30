@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // map  映射  对数组中的每一项进行操作,返回一个新数组
+        const arr = ['red','blue','green','yellow'];
+        const newArr = arr.map((item,index)=>{
+            return item + ' color';
+        });
+        console.log(newArr);
+        // join  数组转字符串,默认以逗号分隔,也可以自定义分隔符
+        console.log(newArr.join(''));
+    </script>
+</body>
+</html>
